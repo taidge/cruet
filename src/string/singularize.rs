@@ -84,6 +84,7 @@ pub fn to_singular(non_singular_string: &str) -> String {
             "boxes" => "box",
             "men" => "man",
             "women" => "woman",
+            "legislation" => "legislation",
             "dice" => "die",
             "yeses" => "yes",
             "feet" => "foot",

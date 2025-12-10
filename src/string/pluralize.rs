@@ -109,6 +109,7 @@ pub fn to_plural(non_plural_string: &str) -> String {
             "ox" => "oxen",
             "man" => "men",
             "woman" => "women",
+            "legislation" => "legislation",
             "die" => "dice",
             "yes" => "yeses",
             "foot" => "feet",
