@@ -94,12 +94,12 @@ pub fn to_singular(non_singular_string: &str) -> String {
             "quizzes" => "quiz"
         ];
         for &(ref rule, replace) in RULES.iter().rev() {
-            if let Some(captures) = rule.captures(non_singular_string) {
-                if let Some(c) = captures.get(1) {
-                    let mut buf = String::new();
-                    captures.expand(&format!("{}{}", c.as_str(), replace), &mut buf);
-                    return buf;
-                }
+            if let Some(captures) = rule.captures(non_singular_string)
+                && let Some(c) = captures.get(1)
+            {
+                let mut buf = String::new();
+                captures.expand(&format!("{}{}", c.as_str(), replace), &mut buf);
+                return buf;
             }
         }
 
