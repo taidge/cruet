@@ -43,27 +43,6 @@ pub fn is_title_case(test_string: &str) -> bool {
 }
 
 #[cfg(test)]
-mod benchmarks {
-    extern crate test;
-    use self::test::Bencher;
-
-    #[bench]
-    fn bench_title(b: &mut Bencher) {
-        b.iter(|| super::to_title_case("Foo BAR"));
-    }
-
-    #[bench]
-    fn bench_is_title(b: &mut Bencher) {
-        b.iter(|| super::is_title_case("Foo bar"));
-    }
-
-    #[bench]
-    fn bench_title_from_snake(b: &mut Bencher) {
-        b.iter(|| super::to_title_case("foo_bar"));
-    }
-}
-
-#[cfg(test)]
 mod tests {
     use super::{is_title_case, to_title_case};
 

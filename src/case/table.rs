@@ -38,24 +38,6 @@ pub fn is_table_case(test_string: &str) -> bool {
 }
 
 #[cfg(test)]
-
-mod benchmarks {
-    extern crate test;
-    use self::test::Bencher;
-
-    #[bench]
-    fn bench_table_case(b: &mut Bencher) {
-        b.iter(|| super::to_table_case("Foo bar"));
-    }
-
-    #[bench]
-    fn bench_is_table_case(b: &mut Bencher) {
-        b.iter(|| super::is_table_case("Foo bar"));
-    }
-}
-
-#[cfg(test)]
-
 mod tests {
     use super::{is_table_case, to_table_case};
 

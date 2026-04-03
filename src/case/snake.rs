@@ -39,32 +39,6 @@ pub fn is_snake_case(test_string: &str) -> bool {
 }
 
 #[cfg(test)]
-mod benchmarks {
-    extern crate test;
-    use self::test::Bencher;
-
-    #[bench]
-    fn bench_snake_from_title(b: &mut Bencher) {
-        b.iter(|| super::to_snake_case("Foo bar"));
-    }
-
-    #[bench]
-    fn bench_snake_from_camel(b: &mut Bencher) {
-        b.iter(|| super::to_snake_case("fooBar"));
-    }
-
-    #[bench]
-    fn bench_snake_from_snake(b: &mut Bencher) {
-        b.iter(|| super::to_snake_case("foo_bar_bar_bar"));
-    }
-
-    #[bench]
-    fn bench_is_snake(b: &mut Bencher) {
-        b.iter(|| super::is_snake_case("Foo bar"));
-    }
-}
-
-#[cfg(test)]
 mod tests {
     use super::{is_snake_case, to_snake_case};
 

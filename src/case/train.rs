@@ -43,27 +43,6 @@ pub fn to_train_case(non_train_case_string: &str) -> String {
 }
 
 #[cfg(test)]
-mod benchmarks {
-    extern crate test;
-    use self::test::Bencher;
-
-    #[bench]
-    fn bench_train(b: &mut Bencher) {
-        b.iter(|| super::to_train_case("Foo bar"));
-    }
-
-    #[bench]
-    fn bench_is_train(b: &mut Bencher) {
-        b.iter(|| super::is_train_case("Foo bar"));
-    }
-
-    #[bench]
-    fn bench_train_from_snake(b: &mut Bencher) {
-        b.iter(|| super::to_train_case("test_test_test"));
-    }
-}
-
-#[cfg(test)]
 mod tests {
     use super::{is_train_case, to_train_case};
 

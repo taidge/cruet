@@ -50,44 +50,6 @@ pub fn is_camel_case(test_string: &str) -> bool {
 }
 
 #[cfg(test)]
-mod benchmarks {
-    extern crate test;
-    use self::test::Bencher;
-
-    #[bench]
-    fn bench_camel0(b: &mut Bencher) {
-        b.iter(|| {
-            let test_string = "Foo bar";
-            super::to_camel_case(test_string)
-        });
-    }
-
-    #[bench]
-    fn bench_camel1(b: &mut Bencher) {
-        b.iter(|| {
-            let test_string = "foo_bar";
-            super::to_camel_case(test_string)
-        });
-    }
-
-    #[bench]
-    fn bench_camel2(b: &mut Bencher) {
-        b.iter(|| {
-            let test_string = "fooBar";
-            super::to_camel_case(test_string)
-        });
-    }
-
-    #[bench]
-    fn bench_is_camel(b: &mut Bencher) {
-        b.iter(|| {
-            let test_string: &str = "Foo bar";
-            super::is_camel_case(test_string)
-        });
-    }
-}
-
-#[cfg(test)]
 mod tests {
     use super::{is_camel_case, to_camel_case};
 

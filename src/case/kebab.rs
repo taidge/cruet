@@ -34,27 +34,6 @@ pub fn to_kebab_case(non_kebab_case_string: &str) -> String {
 }
 
 #[cfg(test)]
-mod benchmarks {
-    extern crate test;
-    use self::test::Bencher;
-
-    #[bench]
-    fn bench_kebab(b: &mut Bencher) {
-        b.iter(|| super::to_kebab_case("Foo bar"));
-    }
-
-    #[bench]
-    fn bench_is_kebab(b: &mut Bencher) {
-        b.iter(|| super::is_kebab_case("Foo bar"));
-    }
-
-    #[bench]
-    fn bench_kebab_from_snake(b: &mut Bencher) {
-        b.iter(|| super::to_kebab_case("test_test_test"));
-    }
-}
-
-#[cfg(test)]
 mod tests {
     use super::{is_kebab_case, to_kebab_case};
 
