@@ -8,7 +8,6 @@ use crate::case::class::to_class_case;
 /// let expected_string: String = "Bar".to_owned();
 /// let asserted_string: String = demodulize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::demodulize::demodulize;
@@ -16,7 +15,6 @@ use crate::case::class::to_class_case;
 /// let expected_string: String = "Bar".to_owned();
 /// let asserted_string: String = demodulize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::demodulize::demodulize;
@@ -24,7 +22,6 @@ use crate::case::class::to_class_case;
 /// let expected_string: String = "Bar".to_owned();
 /// let asserted_string: String = demodulize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::demodulize::demodulize;
@@ -32,7 +29,6 @@ use crate::case::class::to_class_case;
 /// let expected_string: String = "Bar".to_owned();
 /// let asserted_string: String = demodulize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 pub fn demodulize(non_demodulize_string: &str) -> String {
     if non_demodulize_string.contains("::") {

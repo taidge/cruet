@@ -7,7 +7,7 @@
 //! ```rust
 //! use cruet::Inflector;
 //! let camel_case_string: String = "some_string".to_camel_case();
-//! let is_camel_cased: bool= camel_case_string.is_camel_case();
+//! let is_camel_cased: bool = camel_case_string.is_camel_case();
 //! assert!(is_camel_cased == true);
 //! ```
 
@@ -36,46 +36,23 @@ pub mod string;
 /// - Foreign key
 pub mod suffix;
 
-pub use case::class::is_class_case;
-pub use case::class::to_class_case;
-
-pub use case::camel::is_camel_case;
-pub use case::camel::to_camel_case;
-
-pub use case::pascal::is_pascal_case;
-pub use case::pascal::to_pascal_case;
-
-pub use case::snake::is_snake_case;
-pub use case::snake::to_snake_case;
-
-pub use case::screaming_snake::is_screaming_snake_case;
-pub use case::screaming_snake::to_screaming_snake_case;
-
-pub use case::kebab::is_kebab_case;
-pub use case::kebab::to_kebab_case;
-
-pub use case::train::is_train_case;
-pub use case::train::to_train_case;
-
-pub use case::sentence::is_sentence_case;
-pub use case::sentence::to_sentence_case;
-
-pub use case::title::is_title_case;
-pub use case::title::to_title_case;
-
-pub use case::table::is_table_case;
-pub use case::table::to_table_case;
-
+pub use case::camel::{is_camel_case, to_camel_case};
+pub use case::class::{is_class_case, to_class_case};
+pub use case::kebab::{is_kebab_case, to_kebab_case};
+pub use case::pascal::{is_pascal_case, to_pascal_case};
+pub use case::screaming_snake::{is_screaming_snake_case, to_screaming_snake_case};
+pub use case::sentence::{is_sentence_case, to_sentence_case};
+pub use case::snake::{is_snake_case, to_snake_case};
+pub use case::table::{is_table_case, to_table_case};
+pub use case::title::{is_title_case, to_title_case};
+pub use case::train::{is_train_case, to_train_case};
 pub use number::deordinalize::deordinalize;
 pub use number::ordinalize::ordinalize;
-
-pub use suffix::foreign_key::is_foreign_key;
-pub use suffix::foreign_key::to_foreign_key;
-
 pub use string::deconstantize::deconstantize;
 pub use string::demodulize::demodulize;
 pub use string::pluralize::to_plural;
 pub use string::singularize::to_singular;
+pub use suffix::foreign_key::{is_foreign_key, to_foreign_key};
 
 #[allow(missing_docs)]
 pub trait Inflector {
@@ -231,8 +208,9 @@ implement_number_for![
 #[cfg(test)]
 mod benchmarks {
     extern crate test;
-    use self::test::Bencher;
     use Inflector;
+
+    use self::test::Bencher;
 
     macro_rules! benchmarks {
         ( $($test_name:ident => $imp_trait:ident => $to_cast:expr), *) => {

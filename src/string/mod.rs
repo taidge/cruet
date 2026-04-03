@@ -1,4 +1,4 @@
-/// Provides deconstantizea string.
+/// Provides deconstantize a string.
 ///
 /// Example string `Foo::Bar` becomes `Foo`
 pub mod deconstantize;

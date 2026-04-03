@@ -13,7 +13,7 @@ This project is intended to be a safe, welcoming space for collaboration, and co
   - `rustup default nightly`
 
 ## Git/GitHub steps
-1. Fork it ( https://github.com/chrislearn/cruet/fork )
+1. Fork it ( https://github.com/taidge/cruet/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Add test for the new feature (conversions to all different casts MUST also
    pass)
@@ -30,7 +30,7 @@ This project is intended to be a safe, welcoming space for collaboration, and co
 
 ## Is this an issues?
 
-- Please ensure you fill out an [issue](https://github.com/chrislearn/cruet/issues)
+- Please ensure you fill out an [issue](https://github.com/taidge/cruet/issues)
 - Be available for questions.
 
 ## Are you submitting documentation?

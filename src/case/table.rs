@@ -1,5 +1,4 @@
 use crate::case::*;
-
 use crate::string::pluralize::to_plural;
 
 /// Converts a `&str` to `table-case` `String`
@@ -58,8 +57,7 @@ mod benchmarks {
 #[cfg(test)]
 
 mod tests {
-    use super::is_table_case;
-    use super::to_table_case;
+    use super::{is_table_case, to_table_case};
 
     #[test]
     fn from_camel_case() {

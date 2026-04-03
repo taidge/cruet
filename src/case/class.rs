@@ -21,7 +21,7 @@ pub fn to_class_case(non_class_case_string: &str) -> String {
         last_char: ' ',
         first_word: false,
         injectable_char: ' ',
-        has_seperator: false,
+        has_separator: false,
         inverted: false,
         concat_num: true,
     };
@@ -55,8 +55,7 @@ pub fn is_class_case(test_string: &str) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use super::is_class_case;
-    use super::to_class_case;
+    use super::{is_class_case, to_class_case};
 
     #[test]
     fn from_camel_case() {

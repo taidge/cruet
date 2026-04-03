@@ -1,4 +1,4 @@
-/// Orginalizes a `&str`
+/// Ordinalizes a `&str`
 ///
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -6,7 +6,6 @@
 /// let expected_string: String = "a".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -14,7 +13,6 @@
 /// let expected_string: String = "0.1".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -22,7 +20,6 @@
 /// let expected_string: String = "-1st".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -30,7 +27,6 @@
 /// let expected_string: String = "0th".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -38,7 +34,6 @@
 /// let expected_string: String = "1st".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -46,7 +41,6 @@
 /// let expected_string: String = "2nd".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -54,7 +48,6 @@
 /// let expected_string: String = "3rd".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -62,7 +55,6 @@
 /// let expected_string: String = "9th".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -70,7 +62,6 @@
 /// let expected_string: String = "12th".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -78,7 +69,6 @@
 /// let expected_string: String = "12000th".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -86,7 +76,6 @@
 /// let expected_string: String = "12001st".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -94,7 +83,6 @@
 /// let expected_string: String = "12002nd".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -102,7 +90,6 @@
 /// let expected_string: String = "12003rd".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
@@ -110,7 +97,6 @@
 /// let expected_string: String = "12004th".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 pub fn ordinalize(non_ordinalized_string: &str) -> String {
     let chars: Vec<char> = non_ordinalized_string.chars().collect();

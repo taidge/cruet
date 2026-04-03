@@ -4,15 +4,15 @@ use crate::case::*;
 /// ```
 /// use cruet::case::to_snake_case;
 ///
-/// assert_eq!(to_snake_case("foo_bar"),  "foo_bar");
-/// assert_eq!(to_snake_case("HTTP Foo bar"),  "http_foo_bar");
-/// assert_eq!(to_snake_case("HTTPFooBar"),  "http_foo_bar");
-/// assert_eq!(to_snake_case("Foo bar"),  "foo_bar");
-/// assert_eq!(to_snake_case("Foo Bar"),  "foo_bar");
-/// assert_eq!(to_snake_case("FooBar"),  "foo_bar");
-/// assert_eq!(to_snake_case("FOO_BAR"),  "foo_bar");
-/// assert_eq!(to_snake_case("fooBar"),  "foo_bar");
-/// assert_eq!(to_snake_case("fooBar3"),  "foo_bar_3");
+/// assert_eq!(to_snake_case("foo_bar"), "foo_bar");
+/// assert_eq!(to_snake_case("HTTP Foo bar"), "http_foo_bar");
+/// assert_eq!(to_snake_case("HTTPFooBar"), "http_foo_bar");
+/// assert_eq!(to_snake_case("Foo bar"), "foo_bar");
+/// assert_eq!(to_snake_case("Foo Bar"), "foo_bar");
+/// assert_eq!(to_snake_case("FooBar"), "foo_bar");
+/// assert_eq!(to_snake_case("FOO_BAR"), "foo_bar");
+/// assert_eq!(to_snake_case("fooBar"), "foo_bar");
+/// assert_eq!(to_snake_case("fooBar3"), "foo_bar_3");
 /// ```
 pub fn to_snake_case(non_snake_case_string: &str) -> String {
     to_case_snake_like(non_snake_case_string, "_", "lower")
@@ -66,8 +66,7 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use super::is_snake_case;
-    use super::to_snake_case;
+    use super::{is_snake_case, to_snake_case};
 
     #[test]
     fn from_camel_case() {

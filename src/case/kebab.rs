@@ -24,7 +24,7 @@ pub fn is_kebab_case(test_string: &str) -> bool {
 /// assert_eq!(to_kebab_case("foo-bar"), "foo-bar");
 /// assert_eq!(to_kebab_case("FOO_BAR"), "foo-bar");
 /// assert_eq!(to_kebab_case("foo_bar"), "foo-bar");
-/// assert_eq!(to_kebab_case("Foo Bar"),"foo-bar");
+/// assert_eq!(to_kebab_case("Foo Bar"), "foo-bar");
 /// assert_eq!(to_kebab_case("Foo bar"), "foo-bar");
 /// assert_eq!(to_kebab_case("FooBar"), "foo-bar");
 /// assert_eq!(to_kebab_case("fooBar"), "foo-bar");
@@ -56,8 +56,7 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use super::is_kebab_case;
-    use super::to_kebab_case;
+    use super::{is_kebab_case, to_kebab_case};
 
     #[test]
     fn from_camel_case() {

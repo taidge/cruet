@@ -19,7 +19,7 @@ pub fn to_pascal_case(non_pascalized_string: &str) -> String {
         last_char: ' ',
         first_word: false,
         injectable_char: ' ',
-        has_seperator: false,
+        has_separator: false,
         inverted: false,
         concat_num: true,
     };
@@ -87,8 +87,7 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use super::is_pascal_case;
-    use super::to_pascal_case;
+    use super::{is_pascal_case, to_pascal_case};
 
     #[test]
     fn from_camel_case() {

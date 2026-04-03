@@ -42,7 +42,9 @@ fn safe_convert(safe_string: &str) -> String {
 /// assert!(!is_foreign_key("Foo Bar Is A Really Really Long String"));
 /// assert!(!is_foreign_key("fooBarIsAReallyReallyLongString"));
 /// assert!(!is_foreign_key("foo_bar_string_that_is_really_really_long"));
-/// assert!(is_foreign_key("foo_bar_string_that_is_really_really_long_id"));
+/// assert!(is_foreign_key(
+///     "foo_bar_string_that_is_really_really_long_id"
+/// ));
 /// ```
 pub fn is_foreign_key(test_string: &str) -> bool {
     to_foreign_key(test_string) == test_string

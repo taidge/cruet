@@ -1,4 +1,4 @@
-/// Deorginalizes a `&str`
+/// Deordinalizes a `&str`
 ///
 /// ```
 /// use cruet::number::deordinalize::deordinalize;

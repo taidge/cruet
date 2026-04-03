@@ -4,71 +4,61 @@
 ///
 /// Example string `ClassCase`
 pub mod class;
-pub use class::is_class_case;
-pub use class::to_class_case;
+pub use class::{is_class_case, to_class_case};
 
 /// Provides conversion to and detection of camel case strings.
 ///
 /// Example string `camelCase`
 pub mod camel;
-pub use camel::is_camel_case;
-pub use camel::to_camel_case;
+pub use camel::{is_camel_case, to_camel_case};
 
 /// Provides conversion to and detection of snake case strings.
 ///
 /// Example string `snake_case`
 pub mod snake;
-pub use snake::is_snake_case;
-pub use snake::to_snake_case;
+pub use snake::{is_snake_case, to_snake_case};
 
 /// Provides conversion to and detection of screaming snake case strings.
 ///
 /// Example string `SCREAMING_SNAKE_CASE`
 pub mod screaming_snake;
-pub use screaming_snake::is_screaming_snake_case;
-pub use screaming_snake::to_screaming_snake_case;
+pub use screaming_snake::{is_screaming_snake_case, to_screaming_snake_case};
 
 /// Provides conversion to and detection of kebab case strings.
 ///
 /// Example string `kebab-case`
 pub mod kebab;
-pub use kebab::is_kebab_case;
-pub use kebab::to_kebab_case;
+pub use kebab::{is_kebab_case, to_kebab_case};
 
 /// Provides conversion to and detection of train case strings.
 ///
 /// Example string `Train-Case`
 pub mod train;
-pub use train::is_train_case;
-pub use train::to_train_case;
+pub use train::{is_train_case, to_train_case};
 
 /// Provides conversion to and detection of sentence case strings.
 ///
 /// Example string `Sentence case`
 pub mod sentence;
-pub use sentence::is_sentence_case;
-pub use sentence::to_sentence_case;
+pub use sentence::{is_sentence_case, to_sentence_case};
 
 /// Provides conversion to and detection of title case strings.
 ///
 /// Example string `Title Case`
 pub mod title;
-pub use title::is_title_case;
-pub use title::to_title_case;
+pub use title::{is_title_case, to_title_case};
 
 /// Provides conversion to and detection of table case strings.
 ///
 /// Example string `table_cases`
 pub mod table;
-pub use table::is_table_case;
-pub use table::to_table_case;
+pub use table::{is_table_case, to_table_case};
 
 /// Provides conversion to pascal case strings.
 ///
 /// Example string `PascalCase`
 pub mod pascal;
-pub use pascal::is_pascal_case;
-pub use pascal::to_pascal_case;
+pub use pascal::{is_pascal_case, to_pascal_case};
 
 #[doc(hidden)]
 pub struct CamelOptions {
@@ -76,7 +66,7 @@ pub struct CamelOptions {
     pub last_char: char,
     pub first_word: bool,
     pub injectable_char: char,
-    pub has_seperator: bool,
+    pub has_separator: bool,
     pub inverted: bool,
     pub concat_num: bool,
 }
@@ -86,17 +76,17 @@ pub fn to_case_snake_like(convertable_string: &str, replace_with: &str, case: &s
     let mut first_character: bool = true;
     let mut result: String = String::with_capacity(convertable_string.len() * 2);
     for char_with_index in trim_right(convertable_string).char_indices() {
-        if char_is_seperator(&char_with_index.1) {
+        if char_is_separator(&char_with_index.1) {
             if !first_character {
                 first_character = true;
                 result.push(replace_with.chars().next().unwrap_or('_'));
             }
-        } else if requires_seperator(char_with_index, first_character, convertable_string) {
+        } else if requires_separator(char_with_index, first_character, convertable_string) {
             first_character = false;
-            result = snake_like_with_seperator(result, replace_with, &char_with_index.1, case)
+            result = snake_like_with_separator(result, replace_with, &char_with_index.1, case)
         } else {
             first_character = false;
-            result = snake_like_no_seperator(result, &char_with_index.1, case)
+            result = snake_like_no_separator(result, &char_with_index.1, case)
         }
     }
     result
@@ -110,7 +100,7 @@ pub fn to_case_camel_like(convertable_string: &str, camel_options: CamelOptions)
     let mut found_real_char: bool = false;
     let mut result: String = String::with_capacity(convertable_string.len() * 2);
     for character in trim_right(convertable_string).chars() {
-        if char_is_seperator(&character) && found_real_char {
+        if char_is_separator(&character) && found_real_char {
             new_word = true;
         } else if !found_real_char && is_not_alphanumeric(character) {
             continue;
@@ -139,7 +129,7 @@ fn append_on_new_word(
     character: char,
     camel_options: &CamelOptions,
 ) -> String {
-    if not_first_word_and_has_seperator(first_word, camel_options.has_seperator) {
+    if not_first_word_and_has_separator(first_word, camel_options.has_separator) {
         result.push(camel_options.injectable_char);
     }
     if first_word_or_not_inverted(first_word, camel_options.inverted) {
@@ -150,8 +140,8 @@ fn append_on_new_word(
     result
 }
 
-fn not_first_word_and_has_seperator(first_word: bool, has_seperator: bool) -> bool {
-    has_seperator && !first_word
+fn not_first_word_and_has_separator(first_word: bool, has_separator: bool) -> bool {
+    has_separator && !first_word
 }
 
 fn first_word_or_not_inverted(first_word: bool, inverted: bool) -> bool {
@@ -166,7 +156,7 @@ fn last_char_lower_current_is_upper_or_new_word(
     new_word || ((last_char.is_lowercase() && character.is_uppercase()) && (last_char != ' '))
 }
 
-fn char_is_seperator(character: &char) -> bool {
+fn char_is_separator(character: &char) -> bool {
     is_not_alphanumeric(*character)
 }
 
@@ -179,7 +169,7 @@ fn is_not_alphanumeric(character: char) -> bool {
 }
 
 #[inline]
-fn requires_seperator(
+fn requires_separator(
     char_with_index: (usize, char),
     first_character: bool,
     convertable_string: &str,
@@ -190,31 +180,31 @@ fn requires_seperator(
 }
 
 #[inline]
-fn snake_like_no_seperator(mut accumlator: String, current_char: &char, case: &str) -> String {
+fn snake_like_no_separator(mut accumulator: String, current_char: &char, case: &str) -> String {
     if case == "lower" {
-        accumlator.push(current_char.to_ascii_lowercase());
-        accumlator
+        accumulator.push(current_char.to_ascii_lowercase());
+        accumulator
     } else {
-        accumlator.push(current_char.to_ascii_uppercase());
-        accumlator
+        accumulator.push(current_char.to_ascii_uppercase());
+        accumulator
     }
 }
 
 #[inline]
-fn snake_like_with_seperator(
-    mut accumlator: String,
+fn snake_like_with_separator(
+    mut accumulator: String,
     replace_with: &str,
     current_char: &char,
     case: &str,
 ) -> String {
     if case == "lower" {
-        accumlator.push(replace_with.chars().next().unwrap_or('_'));
-        accumlator.push(current_char.to_ascii_lowercase());
-        accumlator
+        accumulator.push(replace_with.chars().next().unwrap_or('_'));
+        accumulator.push(current_char.to_ascii_lowercase());
+        accumulator
     } else {
-        accumlator.push(replace_with.chars().next().unwrap_or('_'));
-        accumlator.push(current_char.to_ascii_uppercase());
-        accumlator
+        accumulator.push(replace_with.chars().next().unwrap_or('_'));
+        accumulator.push(current_char.to_ascii_uppercase());
+        accumulator
     }
 }
 
@@ -276,80 +266,80 @@ fn test_next_or_previous_char_is_lowercase_false() {
 }
 
 #[test]
-fn snake_like_with_seperator_lowers() {
+fn snake_like_with_separator_lowers() {
     assert_eq!(
-        snake_like_with_seperator("".to_owned(), "^", &'c', "lower"),
+        snake_like_with_separator("".to_owned(), "^", &'c', "lower"),
         "^c".to_string()
     )
 }
 
 #[test]
-fn snake_like_with_seperator_upper() {
+fn snake_like_with_separator_upper() {
     assert_eq!(
-        snake_like_with_seperator("".to_owned(), "^", &'c', "upper"),
+        snake_like_with_separator("".to_owned(), "^", &'c', "upper"),
         "^C".to_string()
     )
 }
 
 #[test]
-fn snake_like_no_seperator_lower() {
+fn snake_like_no_separator_lower() {
     assert_eq!(
-        snake_like_no_seperator("".to_owned(), &'C', "lower"),
+        snake_like_no_separator("".to_owned(), &'C', "lower"),
         "c".to_string()
     )
 }
 
 #[test]
-fn snake_like_no_seperator_upper() {
+fn snake_like_no_separator_upper() {
     assert_eq!(
-        snake_like_no_seperator("".to_owned(), &'c', "upper"),
+        snake_like_no_separator("".to_owned(), &'c', "upper"),
         "C".to_string()
     )
 }
 
 #[test]
-fn requires_seperator_upper_not_first_wrap_is_safe_current_upper() {
-    assert_eq!(requires_seperator((2, 'C'), false, "test"), true)
+fn requires_separator_upper_not_first_wrap_is_safe_current_upper() {
+    assert_eq!(requires_separator((2, 'C'), false, "test"), true)
 }
 
 #[test]
-fn requires_seperator_upper_not_first_wrap_is_safe_current_lower() {
-    assert_eq!(requires_seperator((2, 'c'), false, "test"), false)
+fn requires_separator_upper_not_first_wrap_is_safe_current_lower() {
+    assert_eq!(requires_separator((2, 'c'), false, "test"), false)
 }
 
 #[test]
-fn requires_seperator_upper_first_wrap_is_safe_current_upper() {
-    assert_eq!(requires_seperator((0, 'T'), true, "Test"), false)
+fn requires_separator_upper_first_wrap_is_safe_current_upper() {
+    assert_eq!(requires_separator((0, 'T'), true, "Test"), false)
 }
 
 #[test]
-fn requires_seperator_upper_first_wrap_is_safe_current_lower() {
-    assert_eq!(requires_seperator((0, 't'), true, "Test"), false)
+fn requires_separator_upper_first_wrap_is_safe_current_lower() {
+    assert_eq!(requires_separator((0, 't'), true, "Test"), false)
 }
 
 #[test]
-fn requires_seperator_upper_first_wrap_is_safe_current_lower_next_is_too() {
-    assert_eq!(requires_seperator((0, 't'), true, "test"), false)
+fn requires_separator_upper_first_wrap_is_safe_current_lower_next_is_too() {
+    assert_eq!(requires_separator((0, 't'), true, "test"), false)
 }
 
 #[test]
-fn test_char_is_seperator_dash() {
-    assert_eq!(char_is_seperator(&'-'), true)
+fn test_char_is_separator_dash() {
+    assert_eq!(char_is_separator(&'-'), true)
 }
 
 #[test]
-fn test_char_is_seperator_underscore() {
-    assert_eq!(char_is_seperator(&'_'), true)
+fn test_char_is_separator_underscore() {
+    assert_eq!(char_is_separator(&'_'), true)
 }
 
 #[test]
-fn test_char_is_seperator_space() {
-    assert_eq!(char_is_seperator(&' '), true)
+fn test_char_is_separator_space() {
+    assert_eq!(char_is_separator(&' '), true)
 }
 
 #[test]
-fn test_char_is_seperator_when_not() {
-    assert_eq!(char_is_seperator(&'A'), false)
+fn test_char_is_separator_when_not() {
+    assert_eq!(char_is_separator(&'A'), false)
 }
 
 #[test]
@@ -408,16 +398,16 @@ fn test_first_word_or_not_inverted_not_first_word_is_inverted() {
 }
 
 #[test]
-fn test_not_first_word_and_has_seperator_is_first_and_not_seperator() {
-    assert_eq!(not_first_word_and_has_seperator(true, false), false)
+fn test_not_first_word_and_has_separator_is_first_and_not_separator() {
+    assert_eq!(not_first_word_and_has_separator(true, false), false)
 }
 
 #[test]
-fn test_not_first_word_and_has_seperator_not_first_and_not_seperator() {
-    assert_eq!(not_first_word_and_has_seperator(false, false), false)
+fn test_not_first_word_and_has_separator_not_first_and_not_separator() {
+    assert_eq!(not_first_word_and_has_separator(false, false), false)
 }
 
 #[test]
-fn test_not_first_word_and_has_seperator_not_first_and_has_seperator() {
-    assert_eq!(not_first_word_and_has_seperator(false, true), true)
+fn test_not_first_word_and_has_separator_not_first_and_has_separator() {
+    assert_eq!(not_first_word_and_has_separator(false, true), true)
 }

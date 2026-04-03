@@ -17,7 +17,7 @@ pub fn to_title_case(non_title_case_string: &str) -> String {
         last_char: ' ',
         first_word: true,
         injectable_char: ' ',
-        has_seperator: true,
+        has_separator: true,
         inverted: false,
         concat_num: false,
     };
@@ -65,8 +65,7 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use super::is_title_case;
-    use super::to_title_case;
+    use super::{is_title_case, to_title_case};
 
     #[test]
     fn from_camel_case() {

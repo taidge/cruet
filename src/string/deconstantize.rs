@@ -8,7 +8,6 @@ use crate::case::class::to_class_case;
 /// let expected_string: String = "".to_owned();
 /// let asserted_string: String = deconstantize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::deconstantize::deconstantize;
@@ -16,7 +15,6 @@ use crate::case::class::to_class_case;
 /// let expected_string: String = "".to_owned();
 /// let asserted_string: String = deconstantize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::deconstantize::deconstantize;
@@ -24,7 +22,6 @@ use crate::case::class::to_class_case;
 /// let expected_string: String = "Foo".to_owned();
 /// let asserted_string: String = deconstantize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::deconstantize::deconstantize;
@@ -32,7 +29,6 @@ use crate::case::class::to_class_case;
 /// let expected_string: String = "Foo".to_owned();
 /// let asserted_string: String = deconstantize(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 pub fn deconstantize(non_deconstantized_string: &str) -> String {
     if non_deconstantized_string.contains("::") {
