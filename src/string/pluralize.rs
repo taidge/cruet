@@ -1,9 +1,10 @@
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
+
 use regex::Regex;
 
 use crate::string::constants::UNCOUNTABLE_WORDS;
 
-static RULES: Lazy<Vec<(Regex, &'static str)>> = Lazy::new(|| {
+static RULES: LazyLock<Vec<(Regex, &'static str)>> = LazyLock::new(|| {
     vec![(r"(\w*)s$", "s"),
            (r"(\w*([^aeiou]ese))$", ""),
            (r"(\w*(ax|test))is$", "es"),
@@ -29,19 +30,6 @@ static RULES: Lazy<Vec<(Regex, &'static str)>> = Lazy::new(|| {
            (r"(\w*(child))(?:ren)?$", "ren"),
            (r"(\w*eaux)$", "")].into_iter().map(|(rule, replace)| {(Regex::new(rule).unwrap(), replace)}).collect()
 });
-
-macro_rules! special_cases{
-    ($s:ident, $($singular: expr => $plural:expr), *) => {
-        match &$s[..] {
-            $(
-                $singular => {
-                    return $plural.to_owned();
-                },
-            )*
-            _ => ()
-        }
-    }
-}
 
 /// Converts a `&str` to pluralized `String`
 ///

@@ -1,20 +1,8 @@
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
+
 use regex::Regex;
 
 use crate::string::constants::UNCOUNTABLE_WORDS;
-
-macro_rules! special_cases{
-    ($s:ident, $($singular: expr => $plural:expr), *) => {
-        match &$s[..] {
-            $(
-                $singular => {
-                    return $plural.to_owned();
-                },
-            )*
-            _ => ()
-        }
-    }
-}
 
 /// Converts a `&str` to singularized `String`
 ///
@@ -96,7 +84,7 @@ pub fn to_singular(non_singular_string: &str) -> String {
     }
 }
 
-static RULES: Lazy<Vec<(Regex, &'static str)>> = Lazy::new(|| {
+static RULES: LazyLock<Vec<(Regex, &'static str)>> = LazyLock::new(|| {
     vec![
         (r"(\w*)s$", ""),
         (r"(\w*(ss))$", ""),

@@ -16,11 +16,8 @@ Adds String based inflections for Rust. Snake, kebab, camel, sentence, class, ti
 keywords = ["pluralize", "camel", "snake", "Inflector", "inflection"]
 categories = ["text-processing", "value-formatting"]
 
-[badges]
-
 [lib]
 name = "cruet"
 
 [dependencies]
 regex = { version = "1" }
-once_cell = { version = "1" }
