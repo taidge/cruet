@@ -13,6 +13,10 @@ AttributeIDSupressMenu = "AttributeIDSupressMenu"
 teh = "teh"
 Hashi = "Hashi"
 consts = "consts"
+# Ordinal suffix and regex pattern fragments
+nd = "nd"
+strat = "strat"
+extrem = "extrem"
 
 [files]
 extend-exclude = ["**/*.js", "**/*.css", "**/*.html", "examples/*/static/**/*.*"]

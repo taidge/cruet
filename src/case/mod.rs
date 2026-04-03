@@ -72,10 +72,10 @@ pub struct CamelOptions {
 }
 
 #[doc(hidden)]
-pub fn to_case_snake_like(convertable_string: &str, replace_with: &str, case: &str) -> String {
+pub fn to_case_snake_like(convertible_string: &str, replace_with: &str, case: &str) -> String {
     let mut first_character: bool = true;
-    let mut result: String = String::with_capacity(convertable_string.len() * 2);
-    let chars: Vec<char> = trim_right(convertable_string).chars().collect();
+    let mut result: String = String::with_capacity(convertible_string.len() * 2);
+    let chars: Vec<char> = trim_right(convertible_string).chars().collect();
     for (index, &current_char) in chars.iter().enumerate() {
         if char_is_separator(&current_char) {
             if !first_character {
@@ -94,13 +94,13 @@ pub fn to_case_snake_like(convertable_string: &str, replace_with: &str, case: &s
 }
 
 #[doc(hidden)]
-pub fn to_case_camel_like(convertable_string: &str, camel_options: CamelOptions) -> String {
+pub fn to_case_camel_like(convertible_string: &str, camel_options: CamelOptions) -> String {
     let mut new_word: bool = camel_options.new_word;
     let mut first_word: bool = camel_options.first_word;
     let mut last_char: char = camel_options.last_char;
     let mut found_real_char: bool = false;
-    let mut result: String = String::with_capacity(convertable_string.len() * 2);
-    for character in trim_right(convertable_string).chars() {
+    let mut result: String = String::with_capacity(convertible_string.len() * 2);
+    for character in trim_right(convertible_string).chars() {
         if char_is_separator(&character) && found_real_char {
             new_word = true;
         } else if !found_real_char && is_not_alphanumeric(character) {
@@ -161,8 +161,8 @@ fn char_is_separator(character: &char) -> bool {
     is_not_alphanumeric(*character)
 }
 
-fn trim_right(convertable_string: &str) -> &str {
-    convertable_string.trim_end_matches(is_not_alphanumeric)
+fn trim_right(convertible_string: &str) -> &str {
+    convertible_string.trim_end_matches(is_not_alphanumeric)
 }
 
 fn is_not_alphanumeric(character: char) -> bool {
