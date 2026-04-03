@@ -14,4 +14,4 @@ jobs:
       - uses: dtolnay/rust-toolchain@nightly
         with:
           components: rustfmt
-      - run: cargo +nightly fmt --all --check
+      - run: cargo fmt --all --check
