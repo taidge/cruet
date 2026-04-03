@@ -75,18 +75,19 @@ pub struct CamelOptions {
 pub fn to_case_snake_like(convertable_string: &str, replace_with: &str, case: &str) -> String {
     let mut first_character: bool = true;
     let mut result: String = String::with_capacity(convertable_string.len() * 2);
-    for char_with_index in trim_right(convertable_string).char_indices() {
-        if char_is_separator(&char_with_index.1) {
+    let chars: Vec<char> = trim_right(convertable_string).chars().collect();
+    for (index, &current_char) in chars.iter().enumerate() {
+        if char_is_separator(&current_char) {
             if !first_character {
                 first_character = true;
                 result.push(replace_with.chars().next().unwrap_or('_'));
             }
-        } else if requires_separator(char_with_index, first_character, convertable_string) {
+        } else if requires_separator(current_char, index, first_character, &chars) {
             first_character = false;
-            result = snake_like_with_separator(result, replace_with, &char_with_index.1, case)
+            result = snake_like_with_separator(result, replace_with, &current_char, case)
         } else {
             first_character = false;
-            result = snake_like_no_separator(result, &char_with_index.1, case)
+            result = snake_like_no_separator(result, &current_char, case)
         }
     }
     result
@@ -170,13 +171,14 @@ fn is_not_alphanumeric(character: char) -> bool {
 
 #[inline]
 fn requires_separator(
-    char_with_index: (usize, char),
+    current_char: char,
+    index: usize,
     first_character: bool,
-    convertable_string: &str,
+    chars: &[char],
 ) -> bool {
     !first_character
-        && char_is_uppercase(char_with_index.1)
-        && next_or_previous_char_is_lowercase(convertable_string, char_with_index.0)
+        && char_is_uppercase(current_char)
+        && next_or_previous_char_is_lowercase(chars, index)
 }
 
 #[inline]
@@ -208,15 +210,12 @@ fn snake_like_with_separator(
     }
 }
 
-fn next_or_previous_char_is_lowercase(convertable_string: &str, char_with_index: usize) -> bool {
-    convertable_string
-        .chars()
-        .nth(char_with_index + 1)
-        .unwrap_or('A')
-        .is_lowercase()
-        || convertable_string
-            .chars()
-            .nth(char_with_index - 1)
+fn next_or_previous_char_is_lowercase(chars: &[char], index: usize) -> bool {
+    chars.get(index + 1).copied().unwrap_or('A').is_lowercase()
+        || index
+            .checked_sub(1)
+            .and_then(|i| chars.get(i))
+            .copied()
             .unwrap_or('A')
             .is_lowercase()
 }
@@ -257,12 +256,14 @@ fn test_char_is_uppercase_when_it_is_not() {
 
 #[test]
 fn test_next_or_previous_char_is_lowercase_true() {
-    assert_eq!(next_or_previous_char_is_lowercase("TestWWW", 3), true)
+    let chars: Vec<char> = "TestWWW".chars().collect();
+    assert_eq!(next_or_previous_char_is_lowercase(&chars, 3), true)
 }
 
 #[test]
 fn test_next_or_previous_char_is_lowercase_false() {
-    assert_eq!(next_or_previous_char_is_lowercase("TestWWW", 5), false)
+    let chars: Vec<char> = "TestWWW".chars().collect();
+    assert_eq!(next_or_previous_char_is_lowercase(&chars, 5), false)
 }
 
 #[test]
@@ -299,27 +300,32 @@ fn snake_like_no_separator_upper() {
 
 #[test]
 fn requires_separator_upper_not_first_wrap_is_safe_current_upper() {
-    assert_eq!(requires_separator((2, 'C'), false, "test"), true)
+    let chars: Vec<char> = "test".chars().collect();
+    assert_eq!(requires_separator('C', 2, false, &chars), true)
 }
 
 #[test]
 fn requires_separator_upper_not_first_wrap_is_safe_current_lower() {
-    assert_eq!(requires_separator((2, 'c'), false, "test"), false)
+    let chars: Vec<char> = "test".chars().collect();
+    assert_eq!(requires_separator('c', 2, false, &chars), false)
 }
 
 #[test]
 fn requires_separator_upper_first_wrap_is_safe_current_upper() {
-    assert_eq!(requires_separator((0, 'T'), true, "Test"), false)
+    let chars: Vec<char> = "Test".chars().collect();
+    assert_eq!(requires_separator('T', 0, true, &chars), false)
 }
 
 #[test]
 fn requires_separator_upper_first_wrap_is_safe_current_lower() {
-    assert_eq!(requires_separator((0, 't'), true, "Test"), false)
+    let chars: Vec<char> = "Test".chars().collect();
+    assert_eq!(requires_separator('t', 0, true, &chars), false)
 }
 
 #[test]
 fn requires_separator_upper_first_wrap_is_safe_current_lower_next_is_too() {
-    assert_eq!(requires_separator((0, 't'), true, "test"), false)
+    let chars: Vec<char> = "test".chars().collect();
+    assert_eq!(requires_separator('t', 0, true, &chars), false)
 }
 
 #[test]

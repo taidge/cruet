@@ -88,9 +88,7 @@ pub fn to_singular(non_singular_string: &str) -> String {
             if let Some(captures) = rule.captures(non_singular_string)
                 && let Some(c) = captures.get(1)
             {
-                let mut buf = String::new();
-                captures.expand(&format!("{}{}", c.as_str(), replace), &mut buf);
-                return buf;
+                return format!("{}{}", c.as_str(), replace);
             }
         }
 

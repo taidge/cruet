@@ -115,9 +115,9 @@ pub fn ordinalize(non_ordinalized_string: &str) -> String {
         return non_ordinalized_string.to_owned();
     }
     if chars.len() > 1 {
-        if second_last_number_is_one(chars) {
+        if second_last_number_is_one(&chars) {
             return format!("{}{}", non_ordinalized_string, "th");
-        } else if string_contains_decimal(non_ordinalized_string.to_owned()) {
+        } else if string_contains_decimal(non_ordinalized_string) {
             return non_ordinalized_string.to_owned();
         }
     }
@@ -133,11 +133,11 @@ fn is_ordinalizable(last_number: char) -> bool {
     !last_number.is_numeric()
 }
 
-fn second_last_number_is_one(chars: Vec<char>) -> bool {
+fn second_last_number_is_one(chars: &[char]) -> bool {
     let second_last_number: char = chars[chars.len() - 2];
     second_last_number == '1'
 }
 
-fn string_contains_decimal(non_ordinalized_string: String) -> bool {
+fn string_contains_decimal(non_ordinalized_string: &str) -> bool {
     non_ordinalized_string.contains('.')
 }

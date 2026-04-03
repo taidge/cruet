@@ -31,14 +31,17 @@ use crate::case::class::to_class_case;
 /// assert!(asserted_string == expected_string);
 /// ```
 pub fn deconstantize(non_deconstantized_string: &str) -> String {
-    if non_deconstantized_string.contains("::") {
-        let split_string: Vec<&str> = non_deconstantized_string.split("::").collect();
-        if split_string.len() > 1 {
-            to_class_case(split_string[split_string.len() - 2])
-        } else {
-            "".to_owned()
+    match non_deconstantized_string.rsplit_once("::") {
+        Some((prefix, _)) => {
+            if prefix.is_empty() {
+                "".to_owned()
+            } else {
+                match prefix.rsplit_once("::") {
+                    Some((_, second_last)) => to_class_case(second_last),
+                    None => to_class_case(prefix),
+                }
+            }
         }
-    } else {
-        "".to_owned()
+        None => "".to_owned(),
     }
 }

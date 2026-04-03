@@ -31,10 +31,8 @@ use crate::case::class::to_class_case;
 /// assert!(asserted_string == expected_string);
 /// ```
 pub fn demodulize(non_demodulize_string: &str) -> String {
-    if non_demodulize_string.contains("::") {
-        let split_string: Vec<&str> = non_demodulize_string.split("::").collect();
-        to_class_case(split_string[split_string.len() - 1])
-    } else {
-        non_demodulize_string.to_owned()
+    match non_demodulize_string.rsplit_once("::") {
+        Some((_, last)) => to_class_case(last),
+        None => non_demodulize_string.to_owned(),
     }
 }
