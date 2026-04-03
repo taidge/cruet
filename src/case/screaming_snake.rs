@@ -48,22 +48,6 @@ pub fn is_screaming_snake_case(test_string: &str) -> bool {
 }
 
 #[cfg(test)]
-mod benchmarks {
-    extern crate test;
-    use self::test::Bencher;
-
-    #[bench]
-    fn bench_screaming_snake(b: &mut Bencher) {
-        b.iter(|| super::to_screaming_snake_case("Foo bar"));
-    }
-
-    #[bench]
-    fn bench_is_screaming_snake(b: &mut Bencher) {
-        b.iter(|| super::is_screaming_snake_case("Foo bar"));
-    }
-}
-
-#[cfg(test)]
 mod tests {
     use super::{is_screaming_snake_case, to_screaming_snake_case};
 

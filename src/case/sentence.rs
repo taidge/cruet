@@ -52,27 +52,6 @@ pub fn is_sentence_case(test_string: &str) -> bool {
 }
 
 #[cfg(test)]
-mod benchmarks {
-    extern crate test;
-    use self::test::Bencher;
-
-    #[bench]
-    fn bench_sentence(b: &mut Bencher) {
-        b.iter(|| super::to_sentence_case("Foo BAR"));
-    }
-
-    #[bench]
-    fn bench_is_sentence(b: &mut Bencher) {
-        b.iter(|| super::is_sentence_case("Foo bar"));
-    }
-
-    #[bench]
-    fn bench_sentence_from_snake(b: &mut Bencher) {
-        b.iter(|| super::to_sentence_case("foo_bar"));
-    }
-}
-
-#[cfg(test)]
 mod tests {
     use super::{is_sentence_case, to_sentence_case};
 
