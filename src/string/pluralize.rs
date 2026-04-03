@@ -166,11 +166,17 @@ mod tests {
 
     #[test]
     fn pluralize_kebab_case() {
-        assert_eq!("section-difficulties", super::to_plural("section-difficulty"));
+        assert_eq!(
+            "section-difficulties",
+            super::to_plural("section-difficulty")
+        );
     }
 
     #[test]
     fn pluralize_snake_case_compound() {
-        assert_eq!("section_difficulties", super::to_plural("section_difficulty"));
+        assert_eq!(
+            "section_difficulties",
+            super::to_plural("section_difficulty")
+        );
     }
 }
