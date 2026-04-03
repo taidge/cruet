@@ -1,3 +1,16 @@
+macro_rules! special_cases {
+    ($s:ident, $($singular:expr => $plural:expr),*) => {
+        match &$s[..] {
+            $(
+                $singular => {
+                    return $plural.to_owned();
+                },
+            )*
+            _ => ()
+        }
+    }
+}
+
 /// Provides deconstantize a string.
 ///
 /// Example string `Foo::Bar` becomes `Foo`
