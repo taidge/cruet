@@ -35,7 +35,7 @@ pub fn to_train_case(non_train_case_string: &str) -> String {
         last_char: ' ',
         first_word: true,
         injectable_char: '-',
-        has_seperator: true,
+        has_separator: true,
         inverted: false,
         concat_num: true,
     };

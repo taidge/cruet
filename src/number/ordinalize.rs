@@ -1,4 +1,4 @@
-/// Orginalizes a `&str`
+/// Ordinalizes a `&str`
 ///
 /// ```
 /// use cruet::number::ordinalize::ordinalize;

@@ -1,7 +1,7 @@
 use once_cell::sync::Lazy;
 use regex::Regex;
 
-use crate::string::constants::UNACCONTABLE_WORDS;
+use crate::string::constants::UNCOUNTABLE_WORDS;
 
 static RULES: Lazy<Vec<(Regex, &'static str)>> = Lazy::new(|| {
     vec![(r"(\w*)s$", "s"),
@@ -95,7 +95,7 @@ macro_rules! special_cases{
 /// assert_eq!(asserted_string, expected_string);
 /// ```
 pub fn to_plural(non_plural_string: &str) -> String {
-    if UNACCONTABLE_WORDS.contains(&non_plural_string) {
+    if UNCOUNTABLE_WORDS.contains(&non_plural_string) {
         non_plural_string.to_owned()
     } else {
         special_cases![non_plural_string,

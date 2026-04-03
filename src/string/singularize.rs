@@ -1,7 +1,7 @@
 use once_cell::sync::Lazy;
 use regex::Regex;
 
-use crate::string::constants::UNACCONTABLE_WORDS;
+use crate::string::constants::UNCOUNTABLE_WORDS;
 
 macro_rules! special_cases{
     ($s:ident, $($singular: expr => $plural:expr), *) => {
@@ -68,7 +68,7 @@ macro_rules! special_cases{
 /// assert!(asserted_string == expected_string);
 /// ```
 pub fn to_singular(non_singular_string: &str) -> String {
-    if UNACCONTABLE_WORDS.contains(&non_singular_string) {
+    if UNCOUNTABLE_WORDS.contains(&non_singular_string) {
         non_singular_string.to_owned()
     } else {
         special_cases![non_singular_string,
