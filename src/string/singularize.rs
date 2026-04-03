@@ -56,6 +56,16 @@ use crate::string::constants::UNCOUNTABLE_WORDS;
 /// assert!(asserted_string == expected_string);
 /// ```
 pub fn to_singular(non_singular_string: &str) -> String {
+    // Find the last separator (hyphen or underscore) to preserve prefixes
+    if let Some(pos) = non_singular_string.rfind(|c| c == '-' || c == '_') {
+        let prefix = &non_singular_string[..=pos]; // includes the separator
+        let last_word = &non_singular_string[pos + 1..];
+        if last_word.is_empty() {
+            return non_singular_string.to_owned();
+        }
+        return format!("{}{}", prefix, to_singular(last_word));
+    }
+
     if UNCOUNTABLE_WORDS.contains(&non_singular_string) {
         non_singular_string.to_owned()
     } else {
@@ -185,4 +195,14 @@ fn singularize_string_returns_none_option_if_no_match() {
     let asserted_string: String = to_singular("bacon");
 
     assert!(expected_string == asserted_string);
+}
+
+#[test]
+fn singularize_kebab_case() {
+    assert_eq!("section-difficulty", to_singular("section-difficulties"));
+}
+
+#[test]
+fn singularize_snake_case_compound() {
+    assert_eq!("section_difficulty", to_singular("section_difficulties"));
 }
