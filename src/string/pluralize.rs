@@ -83,6 +83,16 @@ static RULES: LazyLock<Vec<(Regex, &'static str)>> = LazyLock::new(|| {
 /// assert_eq!(asserted_string, expected_string);
 /// ```
 pub fn to_plural(non_plural_string: &str) -> String {
+    // Find the last separator (hyphen or underscore) to preserve prefixes
+    if let Some(pos) = non_plural_string.rfind(|c| c == '-' || c == '_') {
+        let prefix = &non_plural_string[..=pos]; // includes the separator
+        let last_word = &non_plural_string[pos + 1..];
+        if last_word.is_empty() {
+            return non_plural_string.to_owned();
+        }
+        return format!("{}{}", prefix, to_plural(last_word));
+    }
+
     if UNCOUNTABLE_WORDS.contains(&non_plural_string) {
         non_plural_string.to_owned()
     } else {
@@ -152,5 +162,15 @@ mod tests {
         zoology => zoology;
         mice => mice;
         people => people
+    }
+
+    #[test]
+    fn pluralize_kebab_case() {
+        assert_eq!("section-difficulties", super::to_plural("section-difficulty"));
+    }
+
+    #[test]
+    fn pluralize_snake_case_compound() {
+        assert_eq!("section_difficulties", super::to_plural("section_difficulty"));
     }
 }
