@@ -1,6 +1,6 @@
 [package]
 name = "cruet"
-version = "0.15.0"
+version = "1.0.0"
 authors = ["Josh Teeter<joshteeter@gmail.com>", "Chrislearn Young<chris@sonc.ai>"]
 edition = "2024"
 rust-version = "1.89"
