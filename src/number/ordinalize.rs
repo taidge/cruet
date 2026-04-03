@@ -2,6 +2,13 @@
 ///
 /// ```
 /// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "";
+/// let expected_string: String = "".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
+/// ```
+/// ```
+/// use cruet::number::ordinalize::ordinalize;
 /// let mock_string: &str = "a";
 /// let expected_string: String = "a".to_owned();
 /// let asserted_string: String = ordinalize(mock_string);
@@ -99,6 +106,9 @@
 /// assert!(asserted_string == expected_string);
 /// ```
 pub fn ordinalize(non_ordinalized_string: &str) -> String {
+    if non_ordinalized_string.is_empty() {
+        return String::new();
+    }
     let chars: Vec<char> = non_ordinalized_string.chars().collect();
     let last_number: char = chars[chars.len() - 1];
     if is_ordinalizable(last_number) {

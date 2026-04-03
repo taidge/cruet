@@ -18,6 +18,7 @@
 /// assert!(deordinalize("12004th") == "12004");
 /// assert!(deordinalize("3rd") == "3");
 /// assert!(deordinalize("3rd") == "3");
+/// assert!(deordinalize("") == "");
 /// ```
 pub fn deordinalize(non_ordinalized_string: &str) -> String {
     if non_ordinalized_string.contains('.') {
