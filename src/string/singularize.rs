@@ -24,7 +24,6 @@ macro_rules! special_cases{
 /// let expected_string: String = "foo_bar".to_owned();
 /// let asserted_string: String = to_singular(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::singularize::to_singular;
@@ -32,7 +31,6 @@ macro_rules! special_cases{
 /// let expected_string: String = "ox".to_owned();
 /// let asserted_string: String = to_singular(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::singularize::to_singular;
@@ -40,7 +38,6 @@ macro_rules! special_cases{
 /// let expected_string: String = "crate".to_owned();
 /// let asserted_string: String = to_singular(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::singularize::to_singular;
@@ -48,7 +45,6 @@ macro_rules! special_cases{
 /// let expected_string: String = "ox".to_owned();
 /// let asserted_string: String = to_singular(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::singularize::to_singular;
@@ -56,7 +52,6 @@ macro_rules! special_cases{
 /// let expected_string: String = "box".to_owned();
 /// let asserted_string: String = to_singular(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::singularize::to_singular;
@@ -64,7 +59,6 @@ macro_rules! special_cases{
 /// let expected_string: String = "vengeance".to_owned();
 /// let asserted_string: String = to_singular(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
 /// ```
 /// use cruet::string::singularize::to_singular;
@@ -72,9 +66,7 @@ macro_rules! special_cases{
 /// let expected_string: String = "yoga".to_owned();
 /// let asserted_string: String = to_singular(mock_string);
 /// assert!(asserted_string == expected_string);
-///
 /// ```
-///
 pub fn to_singular(non_singular_string: &str) -> String {
     if UNACCONTABLE_WORDS.contains(&non_singular_string) {
         non_singular_string.to_owned()

@@ -65,8 +65,7 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use super::is_title_case;
-    use super::to_title_case;
+    use super::{is_title_case, to_title_case};
 
     #[test]
     fn from_camel_case() {

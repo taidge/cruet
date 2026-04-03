@@ -89,8 +89,7 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use super::is_camel_case;
-    use super::to_camel_case;
+    use super::{is_camel_case, to_camel_case};
 
     #[test]
     fn from_camel_case() {

@@ -1,7 +1,6 @@
 extern crate cruet;
 
-use cruet::Inflector;
-use cruet::InflectorNumbers;
+use cruet::{Inflector, InflectorNumbers};
 
 macro_rules! str_tests {
     ( $($test_name:ident => $imp_trait:ident => $to_cast:expr => $casted:expr), *) => {

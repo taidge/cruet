@@ -29,14 +29,22 @@ pub fn to_sentence_case(non_sentence_case_string: &str) -> String {
 /// use cruet::case::is_sentence_case;
 ///
 /// assert!(is_sentence_case("Foo"));
-/// assert!(is_sentence_case("Foo bar string that is really really long"));
+/// assert!(is_sentence_case(
+///     "Foo bar string that is really really long"
+/// ));
 ///
-/// assert!(!is_sentence_case("foo-bar-string-that-is-really-really-long"));
+/// assert!(!is_sentence_case(
+///     "foo-bar-string-that-is-really-really-long"
+/// ));
 /// assert!(!is_sentence_case("FooBarIsAReallyReallyLongString"));
 /// assert!(!is_sentence_case("fooBarIsAReallyReallyLongString"));
 /// assert!(!is_sentence_case("Foo Bar Is A Really Really Long String"));
-/// assert!(!is_sentence_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
-/// assert!(!is_sentence_case("foo_bar_string_that_is_really_really_long"));
+/// assert!(!is_sentence_case(
+///     "FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"
+/// ));
+/// assert!(!is_sentence_case(
+///     "foo_bar_string_that_is_really_really_long"
+/// ));
 /// assert!(!is_sentence_case("foo"));
 /// ```
 pub fn is_sentence_case(test_string: &str) -> bool {
@@ -66,8 +74,7 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use super::is_sentence_case;
-    use super::to_sentence_case;
+    use super::{is_sentence_case, to_sentence_case};
 
     #[test]
     fn from_camel_case() {

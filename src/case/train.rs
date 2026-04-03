@@ -65,8 +65,7 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use super::is_train_case;
-    use super::to_train_case;
+    use super::{is_train_case, to_train_case};
 
     #[test]
     fn from_camel_case() {

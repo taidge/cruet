@@ -4,71 +4,61 @@
 ///
 /// Example string `ClassCase`
 pub mod class;
-pub use class::is_class_case;
-pub use class::to_class_case;
+pub use class::{is_class_case, to_class_case};
 
 /// Provides conversion to and detection of camel case strings.
 ///
 /// Example string `camelCase`
 pub mod camel;
-pub use camel::is_camel_case;
-pub use camel::to_camel_case;
+pub use camel::{is_camel_case, to_camel_case};
 
 /// Provides conversion to and detection of snake case strings.
 ///
 /// Example string `snake_case`
 pub mod snake;
-pub use snake::is_snake_case;
-pub use snake::to_snake_case;
+pub use snake::{is_snake_case, to_snake_case};
 
 /// Provides conversion to and detection of screaming snake case strings.
 ///
 /// Example string `SCREAMING_SNAKE_CASE`
 pub mod screaming_snake;
-pub use screaming_snake::is_screaming_snake_case;
-pub use screaming_snake::to_screaming_snake_case;
+pub use screaming_snake::{is_screaming_snake_case, to_screaming_snake_case};
 
 /// Provides conversion to and detection of kebab case strings.
 ///
 /// Example string `kebab-case`
 pub mod kebab;
-pub use kebab::is_kebab_case;
-pub use kebab::to_kebab_case;
+pub use kebab::{is_kebab_case, to_kebab_case};
 
 /// Provides conversion to and detection of train case strings.
 ///
 /// Example string `Train-Case`
 pub mod train;
-pub use train::is_train_case;
-pub use train::to_train_case;
+pub use train::{is_train_case, to_train_case};
 
 /// Provides conversion to and detection of sentence case strings.
 ///
 /// Example string `Sentence case`
 pub mod sentence;
-pub use sentence::is_sentence_case;
-pub use sentence::to_sentence_case;
+pub use sentence::{is_sentence_case, to_sentence_case};
 
 /// Provides conversion to and detection of title case strings.
 ///
 /// Example string `Title Case`
 pub mod title;
-pub use title::is_title_case;
-pub use title::to_title_case;
+pub use title::{is_title_case, to_title_case};
 
 /// Provides conversion to and detection of table case strings.
 ///
 /// Example string `table_cases`
 pub mod table;
-pub use table::is_table_case;
-pub use table::to_table_case;
+pub use table::{is_table_case, to_table_case};
 
 /// Provides conversion to pascal case strings.
 ///
 /// Example string `PascalCase`
 pub mod pascal;
-pub use pascal::is_pascal_case;
-pub use pascal::to_pascal_case;
+pub use pascal::{is_pascal_case, to_pascal_case};
 
 #[doc(hidden)]
 pub struct CamelOptions {

@@ -55,8 +55,7 @@ pub fn is_class_case(test_string: &str) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use super::is_class_case;
-    use super::to_class_case;
+    use super::{is_class_case, to_class_case};
 
     #[test]
     fn from_camel_case() {

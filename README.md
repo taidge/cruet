@@ -2,8 +2,8 @@
 
 This project is forked from https://github.com/whatisinternet/Inflector. The original author doesn't maintain this anymore.
 
-[![Build Status](https://travis-ci.org/chrislearn/cruet.svg?branch=master)](https://travis-ci.org/chrislearn/cruet) [![Crates.io](https://img.shields.io/crates/v/cruet.svg)](https://crates.io/crates/cruet)[![Crate downloads](https://img.shields.io/crates/d/cruet.svg)](https://crates.io/crates/cruet)
-<a href="https://blog.rust-lang.org/2025/02/20/Rust-1.85.0.html"><img alt="Rust Version" src="https://img.shields.io/badge/rust-1.85%2B-blue" /></a>
+[![CI](https://github.com/taidge/cruet/actions/workflows/format.yml/badge.svg)](https://github.com/taidge/cruet/actions) [![Crates.io](https://img.shields.io/crates/v/cruet.svg)](https://crates.io/crates/cruet)[![Crate downloads](https://img.shields.io/crates/d/cruet.svg)](https://crates.io/crates/cruet)
+<a href="https://blog.rust-lang.org/2025/08/07/Rust-1.89.0/"><img alt="Rust Version" src="https://img.shields.io/badge/rust-1.89%2B-blue" /></a>
 
 Adds String based inflections for Rust. Snake, kebab, train, camel,
 sentence, class, and title cases as well as ordinalize,
@@ -31,7 +31,7 @@ cruet = "*"
 ### Compile yourself:
 
 1. Install [Rust and cargo](http://doc.crates.io/)
-2. git clone https://github.com/chrislearn/cruet
+2. git clone https://github.com/taidge/cruet
 3. Library: cd cruet && cargo build --release --lib
 4. You can find the library in target/release
 

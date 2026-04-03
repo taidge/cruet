@@ -87,8 +87,7 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use super::is_pascal_case;
-    use super::to_pascal_case;
+    use super::{is_pascal_case, to_pascal_case};
 
     #[test]
     fn from_camel_case() {
